@@ -180,10 +180,15 @@ class DBHelper {
       String pid, Map<String, dynamic> map) async {
     await _db.collection(collectionProduct).doc(pid).update(map);
   }
-  static Future<void> updateProfile(
+  static Future<void> updateAddressProfile(
       String uid, Map<String, dynamic> map) async {
     await _db.collection(collectionUser).doc(uid).update({'address': map});
   }
+  static Future<void> updateProfile(
+      String uid, Map<String, dynamic> map) async {
+    await _db.collection(collectionUser).doc(uid).update(map);
+  }
+
 
   static Future<void> updateCategoryProductCount(
       List<CategoryModel> categoryList, List<CartModel> cartList) {

@@ -12,6 +12,14 @@ class DBHelper {
   static const String collectionPurchase = 'Purchase';
   static const String collectionOrderSettings = 'Settings';
   static const String documentOrderConstant = 'OrderConstant';
+  static const String collectionRateProduct = 'Rating';
+  static const String collectionComments = 'Comments';
+  static const String collectionUser = 'Users';
+  static const String collectionCart = 'Cart';
+  static const String collectionOrder = 'Orders';
+  static const String collectionOrderDetails = 'OrderDetails';
+  static const String collectionCities = 'Cities';
+
   static final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   static Future<bool> isAdmin(String uid) async {
@@ -44,13 +52,15 @@ class DBHelper {
     return doc.set(categoryModel.toMap());
   }
 
-  static Future<void> addPurchase(PurchaseModel purchaseModel, CategoryModel catModel) async {
+  static Future<void> addPurchase(PurchaseModel purchaseModel, CategoryModel catModel, num newStock) async {
     final doc = _db.collection(collectionPurchase).doc();
     final catDoc = _db.collection(collectionPurchase).doc(catModel.catId);
     final wb=_db.batch();
     purchaseModel.id = doc.id;
     wb.set(doc, purchaseModel.toMap());
     wb.update(catDoc, {categoryModelProductCount:catModel.productCount });
+    final proDoc=_db.collection(collectionProduct).doc(purchaseModel.productId);
+    wb.update(proDoc, {'stock':newStock});
 
     return wb.commit();
 
@@ -81,6 +91,11 @@ class DBHelper {
 
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllProducts() =>
       _db.collection(collectionProduct).snapshots();
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllOrders() =>
+      _db.collection(collectionOrder).snapshots();
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUsers() =>
+      _db.collection(collectionUser).snapshots();
+
 
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllPurchase(
           String id) =>

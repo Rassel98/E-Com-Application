@@ -36,6 +36,7 @@ class ProductPage extends StatelessWidget {
                   return Card(
                     child: ListTile(
                       title: Text(' ${product.name}'),
+                      subtitle: Text('Stock: ${product.stock}'),
                       trailing: Text('$currencySymbols ${product.salePrice.toString()}'),
                       onTap: ()=>Navigator.pushNamed(context, ProductDetailsPage.routeName,arguments: product.id),
                       ),

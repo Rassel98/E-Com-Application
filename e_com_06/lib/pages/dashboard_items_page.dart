@@ -7,6 +7,8 @@ import 'package:e_com_06/pages/product_page.dart';
 import 'package:e_com_06/pages/report_page.dart';
 import 'package:e_com_06/pages/setting_page.dart';
 import 'package:e_com_06/pages/user_page.dart';
+import 'package:e_com_06/provider/order_provider.dart';
+import 'package:e_com_06/provider/user_provider.dart';
 import 'package:e_com_06/widgets/dashboard_item_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +23,8 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Provider.of<ProductProvider>(context, listen: false).getAllCategories();
     Provider.of<ProductProvider>(context, listen: false).getAllProducts();
+    Provider.of<OrderProvider>(context, listen: false).getAllOrders();
+    Provider.of<UserProvider>(context, listen: false).getAllUsers();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),

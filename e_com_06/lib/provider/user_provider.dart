@@ -1,37 +1,42 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_com_user/db/db_helper.dart';
-import 'package:e_com_user/model/city_model.dart';
-import 'package:e_com_user/model/user_model.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../auth/auth_service.dart';
+import '../db/db_helper.dart';
+import '../model/city_model.dart';
+import '../model/user_model.dart';
 
 class UserProvider extends ChangeNotifier {
   List<CityModel> cityList = [];
   UserModel? userModel;
+  List<UserModel>userList=[];
 
   getAllCities() {
-    DBHelper.getAllCities().listen((snapshot) {
-      cityList = List.generate(snapshot.docs.length,
-          (index) => CityModel.fromMap(snapshot.docs[index].data()));
-      notifyListeners();
+    // DBHelper.getAllCities().listen((snapshot) {
+    //   cityList = List.generate(snapshot.docs.length,
+    //       (index) => CityModel.fromMap(snapshot.docs[index].data()));
+    //   notifyListeners();
+    // });
+  }
+  getAllUsers(){
+    DBHelper.getAllUsers().listen((event) {
+      userList=List.generate(event.docs.length, (index) =>
+      UserModel.fromMap(event.docs[index].data())
+      );
+
     });
   }
 
-  Future<void> addUser(UserModel userModel) => DBHelper.addUser(userModel);
 
-  Future<bool> doseUserExist(String uid) => DBHelper.doseUserExist(uid);
+  // Stream<DocumentSnapshot<Map<String, dynamic>>> getUserById(String uid) =>
+  //     DBHelper.getUserById(uid);
 
-  Stream<DocumentSnapshot<Map<String, dynamic>>> getUserById(String uid) =>
-      DBHelper.getUserById(uid);
-  Future<void> updateAddressProfile(String uid, Map<String, dynamic> map) =>
-      DBHelper.updateAddressProfile(uid, map);
 
-  Future<void> updateProfile(String uid, Map<String, dynamic> map) =>
-      DBHelper.updateProfile(uid, map);
+
 
   List<String> getCityNameByArea(String? city) {
     if (city != null) {

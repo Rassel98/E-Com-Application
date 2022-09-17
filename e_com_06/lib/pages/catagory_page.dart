@@ -35,10 +35,7 @@ class CategoryPage extends StatelessWidget {
                     child: ListTile(
                       title:
                           Text(' ${category.catName}(${category.productCount})'),
-                      trailing: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.delete),
-                      ),
+
                     ),
                   );
                 },

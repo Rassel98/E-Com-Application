@@ -63,6 +63,7 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
                   ListTile(
                     title: Text(product.name!),
+                    subtitle: Text('Stock: ${product.stock}'),
                     trailing: IconButton(
                       onPressed: () {
                         _updateDetails(context, provider, pid, false, 'name');
@@ -272,7 +273,7 @@ class ProductDetailsPage extends StatelessWidget {
                               quantity: num.parse(qController.text),
                               productId: product.id);
                           provider
-                              .addPurchase(model, product.category!)
+                              .addPurchase(model, product.category!,product.stock)
                               .then((value) {
                             EasyLoading.dismiss();
                             qController.clear();

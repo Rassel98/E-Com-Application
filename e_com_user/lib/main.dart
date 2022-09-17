@@ -1,6 +1,7 @@
 import 'package:e_com_user/pages/cart_page.dart';
 import 'package:e_com_user/pages/checkout_page.dart';
 import 'package:e_com_user/pages/login_page.dart';
+import 'package:e_com_user/pages/my_profile_page.dart';
 import 'package:e_com_user/pages/phone_varification_page.dart';
 import 'package:e_com_user/pages/user_address_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         CheckoutPage.routeName: (_) =>   const CheckoutPage(),
         OrderSucessfullPage.routeName: (_) =>   const OrderSucessfullPage(),
         MyOrderPage.routeName: (_) => const  MyOrderPage(),
+        ProfilePage.routeName: (_) => const  ProfilePage(),
       },
     );
   }

@@ -287,6 +287,7 @@ class _NewProductPageState extends State<NewProductPage> {
     if (formKey.currentState!.validate()) {
       EasyLoading.show(dismissOnTap: false, status: 'Please Wait..');
       final productModel = ProductModel(
+          stock:num.parse(quantityController.text) ,
           name: nameController.text,
           description: desController.text,
           category: _category,

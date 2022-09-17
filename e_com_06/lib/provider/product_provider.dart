@@ -62,10 +62,11 @@ class ProductProvider extends ChangeNotifier {
     );
     return DBHelper.addCategory(categoryModel);
   }
-  Future<void> addPurchase(PurchaseModel purchaseModel, String category)async {
+  Future<void> addPurchase(PurchaseModel purchaseModel, String category, num stock)async {
     final catModel=getCategoryByName(category);
     catModel.productCount+=purchaseModel.quantity;
-    DBHelper.addPurchase(purchaseModel,catModel);
+    final newStock=stock+purchaseModel.quantity;
+    DBHelper.addPurchase(purchaseModel,catModel,newStock);
   }
 
 
