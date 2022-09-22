@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 import 'pages/launcher_page.dart';
 import 'pages/my_order_page.dart';
 import 'pages/success_order_page.dart';
-import 'pages/order_page.dart';
+
 import 'pages/product_details_page.dart';
 import 'pages/product_page.dart';
 import 'pages/registration_page.dart';
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       builder: EasyLoading.init(),
       initialRoute: LauncherPage.routeName,
       routes: {
-        OrderPage.routeName: (_) => const OrderPage(),
+
         ProductPage.routeName: (_) => const ProductPage(),
         LauncherPage.routeName: (_) => const LauncherPage(),
         ProductDetailsPage.routeName: (_) => ProductDetailsPage(),

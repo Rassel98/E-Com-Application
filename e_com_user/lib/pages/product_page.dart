@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:e_com_user/auth/auth_service.dart';
 import 'package:e_com_user/pages/cart_page.dart';
 import 'package:e_com_user/provider/card_provider.dart';
+import 'package:e_com_user/provider/user_provider.dart';
 import 'package:e_com_user/widgets/main_drawer.dart';
 import 'package:e_com_user/widgets/product_item.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +26,7 @@ class _ProductPageState extends State<ProductPage> {
     Provider.of<ProductProvider>(context, listen: false).getAllProducts();
     Provider.of<ProductProvider>(context, listen: false).getAllCategories();
     Provider.of<CartProvider>(context, listen: false).getCartByUser();
+    Provider.of<UserProvider>(context, listen: false).getUserById(AuthService.user!.uid);
     Provider.of<ProductProvider>(context, listen: false)
         .getAllFeaturedProducts();
     // TODO: implement didChangeDependencies

@@ -63,15 +63,6 @@ class _LoginPageState extends State<LoginPage> {
             left: -getBiglDiameter(context) / 4,
             top: -getBiglDiameter(context) / 4,
             child: Container(
-              child: const Center(
-                child: Text(
-                  "Rassel",
-                  style: TextStyle(
-                      fontFamily: "Pacifico",
-                      fontSize: 40,
-                      color: Colors.white),
-                ),
-              ),
               width: getBiglDiameter(context),
               height: getBiglDiameter(context),
               decoration: const BoxDecoration(
@@ -80,6 +71,15 @@ class _LoginPageState extends State<LoginPage> {
                       colors: [Color(0xFFB226B2), Color(0xFFFF4891)],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter)),
+              child: const Center(
+                child: Text(
+                  "",
+                  style: TextStyle(
+                      fontFamily: "Pacifico",
+                      fontSize: 40,
+                      color: Colors.white),
+                ),
+              ),
             ),
           ),
           Positioned(

@@ -7,6 +7,7 @@ import 'package:e_com_06/pages/product_page.dart';
 import 'package:e_com_06/pages/report_page.dart';
 import 'package:e_com_06/pages/setting_page.dart';
 import 'package:e_com_06/pages/user_page.dart';
+import 'package:e_com_06/provider/user_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -24,6 +25,7 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => ProductProvider()),
     ChangeNotifierProvider(create: (context) =>OrderProvider()),
+    ChangeNotifierProvider(create: (context) =>UserProvider()),
   ], child: const MyApp()));
 }
 

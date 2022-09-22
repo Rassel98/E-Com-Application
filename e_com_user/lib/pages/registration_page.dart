@@ -202,7 +202,7 @@ class _RegisterPageState extends State<RegisterPage> {
         } else {
           AuthService.logout();
           setState(() {
-            errMsg = 'You are not an Admin';
+            errMsg = 'Your information is in correct';
           });
         }
       } on FirebaseAuthException catch (e) {
